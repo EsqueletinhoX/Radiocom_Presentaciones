@@ -1,0 +1,258 @@
+% =============================================================
+%  ENLACE A: [COMPLETAR]
+%  Responsables: [COMPLETAR]
+%  Misma estructura que el Enlace B (secciones/03_enlace_B.tex).
+%  1) Completar los números en datos/enlace_A.tex
+%  2) Reemplazar cada \completar[...] por el texto propio
+%  3) Figuras en figuras/A_*.png|jpg
+% =============================================================
+\renewcommand{\seccorta}{Enlace A}
+\section{Enlace A: \EAnombre}
+
+% ---------------------------------------------------------------
+\begin{frame}{Definición del enlace y relevamiento geográfico}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lLL@{}}
+    \toprule
+     & \textbf{Estación A: \EAunoNombre} & \textbf{Estación B: \EAdosNombre} \\ \midrule
+    Ubicación & \EAunoUbic & \EAdosUbic \\
+    Latitud / Longitud & \EAunoLat\ / \EAunoLon & \EAdosLat\ / \EAdosLon \\
+    Cota del terreno (s.n.m.) & \EAunoCota & \EAdosCota \\
+    Altura máxima disponible & \EAunoMax & \EAdosMax \\
+    Altura de instalación propuesta & \textbf{\EAunoAlt} & \textbf{\EAdosAlt} \\
+    Cota total de la antena & \EAunoAntena & \EAdosAntena \\
+    Azimut & \EAazUnoDos\ (A$\to$B) & \EAazDosUno\ (B$\to$A) \\
+    Elevación (tilt) & \EAtiltUno & \EAtiltDos \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{6pt}
+  \begin{columns}[T]
+    \column{0.32\textwidth}
+    \begin{block}{Distancia}\centering\EAdist\end{block}
+    \column{0.32\textwidth}
+    \begin{block}{$\Delta$ terreno}\centering\EAdifTerreno\end{block}
+    \column{0.32\textwidth}
+    \begin{block}{$\Delta$ antenas}\centering\EAdifAntenas\end{block}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Perfil del terreno y obstáculos}
+  \begin{columns}[c]
+    \column{0.52\textwidth}
+    \begin{itemize}
+      \item Herramientas: \completar[UISP / Google Earth]
+      \item Tipo de topografía: \completar
+      \item Obstáculo crítico: \EAobstaculo, a $d_1=\EAdUno$ km de la Est.~A
+      \item Diferencias entre UISP y Google Earth 3D: \completar
+    \end{itemize}
+    \column{0.45\textwidth}\centering
+    \figura{A_perfil.png}{\linewidth}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Línea de vista y primera zona de Fresnel}
+  \begin{columns}[c]
+    \column{0.55\textwidth}
+    \small
+    \[
+      R_1 = 17.32\sqrt{\frac{\EAdUno\times\EAdDos}{\EAfrecNum\times D}} = \textbf{\EArFresnel}
+    \]
+    \begin{itemize}
+      \item Despeje mínimo (60\,\% de $R_1$): \EArSesenta
+      \item Despeje medido: \EAdespeje
+      \item Despeje logrado: \EAdespejePct\ de $R_1$
+    \end{itemize}
+    \column{0.42\textwidth}\centering
+    \figura{A_google_earth.jpg}{\linewidth}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Determinación de las alturas mínimas de antena}
+  \begin{columns}[c]
+    \column{0.55\textwidth}
+    \small
+    \begin{itemize}
+      \item Alturas mínimas: \EAunoAlt\ / \EAdosAlt\ $\Rightarrow$ señal esperada \EAprxSim
+      \item Efecto de subir +5 m: \completar
+      \item Efecto de subir +10 m: \completar
+      \item Conclusión: \completar
+    \end{itemize}
+    \column{0.42\textwidth}\centering
+    \figura{A_senal_uisp.png}{\linewidth}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Selección de frecuencia y marco regulatorio}
+  \begin{block}{Banda elegida: \EAfrec}
+    Justificación: \completar
+  \end{block}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lL@{}}
+    \toprule
+    Banda & \completar \\
+    Condición de uso & \completar \\
+    Normativa & \completar \\
+    Restricciones & \completar \\
+    \bottomrule
+  \end{tabularx}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Selección del ancho de canal}
+  \begin{columns}[c]
+    \column{0.45\textwidth}\centering
+    \begin{tabular}{cc}
+      \toprule
+      \textbf{Ancho} & \textbf{Capacidad} \\ \midrule
+      10 MHz & \completar \\
+      20 MHz & \completar \\
+      40 MHz & \completar \\
+      80 MHz & \completar \\
+      \bottomrule
+    \end{tabular}
+    \column{0.52\textwidth}
+    \begin{alertblock}{Selección: \EAcanal}
+      \completar[justificación]
+    \end{alertblock}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Selección del equipamiento: \EAequipo}
+  \small
+  \begin{columns}[T]
+    \column{0.52\textwidth}
+    \begin{tabularx}{\linewidth}{@{}lL@{}}
+      \toprule
+      Modelo & \completar \\
+      Banda & \completar \\
+      Potencia máx. TX & \completar \\
+      Sensibilidad & \completar \\
+      Modulación / MCS & \completar \\
+      Anchos de canal & \completar \\
+      Throughput máx. & \completar \\
+      Antena / ganancia & \EAganancia \\
+      Interfaz / alimentación & \completar \\
+      \bottomrule
+    \end{tabularx}
+    \column{0.45\textwidth}
+    \textbf{Justificación}
+    \begin{itemize}
+      \item Distancia: \completar
+      \item Capacidad: \completar
+      \item Frecuencia: \completar
+      \item Interferencias: \completar
+      \item Margen: \completar
+      \item Costo/disponibilidad: \completar
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Capacidad requerida}
+  \begin{itemize}
+    \item Capacidad mínima definida: \EAcapReq
+    \item Justificación del tráfico: \completar
+    \item Capacidad simulada con ruido: \EAcapRuido
+  \end{itemize}
+  \begin{block}{Verificación}
+    \centering Capacidad disponible (\EAcapRuido) $>$ requerida (\EAcapReq)\,?
+  \end{block}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Atenuación de espacio libre y presupuesto de RF}
+  \begin{columns}[T]
+    \column{0.47\textwidth}
+    \[
+      A_0 = 92.44 + 20\log f + 20\log d = \textbf{\EAfspl}
+    \]
+    \small Extremo más crítico y por qué: \completar
+    \column{0.5\textwidth}\small
+    \begin{tabular}{@{}lr@{}}
+      \toprule
+      $P_{TX}$ & \EAptx \\
+      $L_{TX}$, $L_{RX}$ & \completar \\
+      $G_{TX}$ = $G_{RX}$ & \EAganancia \\
+      $A_0$ & \EAfspl \\
+      $A_{obs}$ & \completar \\ \midrule
+      $P_{RX}$ teórica & \EAprxTeo \\
+      $P_{RX}$ simulada & \EAprxSim \\
+      \bottomrule
+    \end{tabular}
+  \end{columns}
+  \vspace{6pt}
+  \begin{alertblock}{Discrepancia teoría vs.\ simulación}
+    \completar
+  \end{alertblock}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{PIRE, sensibilidad y margen de enlace}
+  \[ \text{PIRE} = P_{TX} + G_{TX} = \textbf{\EApire} \]
+  Verificación regulatoria: \completar
+  \vspace{6pt}\\
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{MCS} & $S_{RX}$ & Margen \\ \midrule
+    Máxima (256QAM) & \completar & \EAmargenMax \\
+    Media (16QAM)   & \completar & \EAmargenMed \\
+    Básica (BPSK)   & \completar & \completar \\
+    \bottomrule
+  \end{tabular}
+  \vspace{4pt}\\
+  Rate adaptation / conclusión: \completar
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Ruido, SNR, pérdidas adicionales e interferencias}
+  \[ \text{SNR} = P_{RX} - P_{ruido} = \EAprxSim - (\EAruido) = \textbf{\EAsnr} \]
+  \begin{itemize}
+    \item Modulación alcanzable con ese SNR: \EAmcs
+    \item Pérdidas por obstáculos ($A_{obs}$): \completar
+    \item Análisis de interferencias: \completar
+    \item Extremo más crítico: \completar
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Orientación, montaje, cableado y protección}
+  \small
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+       & Azimut & Tilt \\ \midrule
+      Est. A & \EAazUnoDos & \EAtiltUno \\
+      Est. B & \EAazDosUno & \EAtiltDos \\
+      \bottomrule
+    \end{tabular}\\[4pt]
+    Polarización: \completar\\
+    Procedimiento de alineación: \completar
+    \column{0.48\textwidth}
+    \begin{itemize}
+      \item Montaje Est.~A: \completar
+      \item Montaje Est.~B: \completar
+      \item Cable: tipo \completar, longitud \EAcable
+      \item Alimentación: \completar
+      \item Protección / PAT: \completar
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Optimización del enlace}
+  \begin{block}{Configuración propuesta}
+    \EAequipo, \EAunoAlt/\EAdosAlt, canal de \EAcanal
+  \end{block}
+  \begin{itemize}
+    \item Mayor ancho de canal: \completar
+    \item Mayor altura: \completar
+    \item Antenas de mayor ganancia: \completar
+    \item Otra frecuencia: \completar
+  \end{itemize}
+\end{frame}

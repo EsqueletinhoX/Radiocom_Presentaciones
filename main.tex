@@ -1,0 +1,38 @@
+% =============================================================
+%  Sistemas de Radiocomunicación - Actividad 2 - Parte 1
+%  Presentación conjunta Enlace A / Enlace B
+%  Compilar:  latexmk -pdf main.tex
+% =============================================================
+\documentclass[aspectratio=169,10pt]{beamer}
+\input{config/estilo}
+
+% ---- Datos numéricos de cada enlace (cada equipo edita SOLO el suyo)
+\input{datos/enlace_A}
+\input{datos/enlace_B}
+
+\title{Radioenlaces punto a punto}
+\subtitle{Actividad 2 -- Parte 1: Diseño y simulación}
+\author{%
+  \textbf{Enlace A:} \completar[integrantes] \\[2pt]
+  \textbf{Enlace B:} Arteaga Barrera, Cristian E. \quad Baccino, Luca}
+\institute{Sistemas de Radiocomunicación -- FCEFyN, UNC \\
+  Docentes: Ing. Carlos Liendo, Ing. Federico T. Dadam}
+\date{\completar[fecha]}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+\input{secciones/01_teoria}
+\input{secciones/02_enlace_A}
+\input{secciones/03_enlace_B}
+\input{secciones/04_comparacion}
+\input{secciones/05_conclusiones}
+
+\end{document}

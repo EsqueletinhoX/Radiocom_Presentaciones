@@ -1,0 +1,73 @@
+% ================== Paquetes ==================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\graphicspath{{figuras/}}
+
+% ================== Colores (FCEFyN) ==================
+\definecolor{verde}{HTML}{1E4035}
+\definecolor{naranja}{HTML}{D3822B}
+\definecolor{grisclaro}{HTML}{F4F2EF}
+
+\usetheme{default}
+\setbeamercolor{frametitle}{fg=white,bg=verde}
+\setbeamercolor{title}{fg=verde}
+\setbeamercolor{subtitle}{fg=naranja}
+\setbeamercolor{structure}{fg=verde}
+\setbeamercolor{item}{fg=naranja}
+\setbeamercolor{section in toc}{fg=verde}
+\setbeamercolor{block title}{fg=white,bg=verde}
+\setbeamercolor{block body}{bg=grisclaro}
+\setbeamercolor{block title alerted}{fg=white,bg=naranja}
+\setbeamercolor{block body alerted}{bg=grisclaro}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1.2ex,leftskip=1em]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle
+    \hfill{\small\seccorta}\hspace*{1em}
+  \end{beamercolorbox}}
+\setbeamertemplate{footline}{%
+  \hfill{\scriptsize\color{gray}Radioenlaces PtP -- Parte 1\quad\insertframenumber/\inserttotalframenumber}\hspace*{1em}\vspace*{1ex}}
+
+% Logos en la portada
+\titlegraphic{\includegraphics[height=1.2cm]{logos_unc_fcefyn}}
+
+% Separador de sección automático
+\AtBeginSection[]{%
+  \begin{frame}[plain]
+    \vfill\centering
+    {\usebeamercolor[fg]{title}\Huge\bfseries\insertsectionhead}\par\vspace{4pt}
+    {\color{naranja}\rule{0.4\textwidth}{2pt}}
+    \vfill
+  \end{frame}}
+
+% ================== Macros de trabajo ==================
+% Marca en rojo lo que falta completar:  \completar  o  \completar[qué falta]
+\newcommand{\completar}[1][]{\colorbox{yellow!60}{\color{red}\bfseries[COMPLETAR\if\relax\detokenize{#1}\relax\else: #1\fi]}}
+
+% Figura o recuadro si todavía no existe el archivo:
+%   \figura{archivo.png}{ancho}
+\newcommand{\figura}[2]{%
+  \IfFileExists{figuras/#1}%
+    {\includegraphics[width=#2,height=0.62\textheight,keepaspectratio]{#1}}%
+    {\fbox{\parbox[c][0.35\textheight][c]{#2}{\centering\color{red}\bfseries
+      [FIGURA PENDIENTE]\\\normalfont\small figuras/\detokenize{#1}}}}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+% Texto corto de la sección que aparece a la derecha del título de cada diapositiva
+\newcommand{\seccorta}{}

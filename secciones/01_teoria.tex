@@ -1,0 +1,88 @@
+% =============================================================
+%  1. INTRODUCCIÓN TEÓRICA (común a ambos enlaces)
+% =============================================================
+\renewcommand{\seccorta}{Teoría}
+\section{Introducción teórica}
+
+\begin{frame}{Objetivo de la actividad}
+  \begin{block}{Parte 1}
+    Diseñar y simular un radioenlace punto a punto entre dos sitios reales de Córdoba,
+    justificando cada decisión: alturas, frecuencia, ancho de canal, equipamiento,
+    presupuesto de RF, regulación, montaje y protección.
+  \end{block}
+  \vspace{4pt}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Enlace A}\\ \EAnombre
+    \column{0.48\textwidth}
+    \textbf{Enlace B}\\ \EBnombre
+  \end{columns}
+  \vspace{8pt}
+  \textbf{Herramientas:} UISP Design Center (perfil, simulación de señal y capacidad),
+  Google Earth Pro con edificios 3D (validación de obstáculos), hojas de datos del fabricante.
+\end{frame}
+
+\begin{frame}{Componentes principales de un enlace PtP}
+  \small
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \textbf{Transceptor:} modula/demodula datos de red en RF.
+      \item \textbf{Antena:} convierte corrientes de RF en ondas dirigidas y viceversa.
+      \item \textbf{Sistema de alimentación:} tensión y corriente adecuadas para operación continua.
+      \item \textbf{PoE:} energía + datos por un único cable de pares trenzados.
+      \item \textbf{Cableado de datos:} UTP/FTP o fibra hacia la red interior.
+      \item \textbf{Conectores:} RJ45, N, SMA.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \textbf{Soportes:} herrajes que permiten ajustar azimut y elevación y resisten el viento.
+      \item \textbf{Torre o mástil:} eleva la antena para lograr LOS y despeje de Fresnel.
+      \item \textbf{Protección contra sobretensiones:} descargadores en la línea PoE.
+      \item \textbf{Puesta a tierra:} disipa corrientes de falla y descargas.
+      \item \textbf{Vinculación con la red:} switches/routers para integrar el enlace a la LAN/WAN.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Parámetros principales (1/2)}
+  \small
+  \begin{tabularx}{\textwidth}{@{}p{3.6cm}L@{}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Descripción} \\ \midrule
+    Frecuencia de operación & Portadora central (GHz); define propagación y tamaño de antena. \\
+    Ancho de canal & Espectro ocupado (MHz): más ancho $\Rightarrow$ más capacidad pero más ruido captado. \\
+    Potencia de transmisión & Potencia entregada a la antena (dBm). \\
+    Ganancia de antena & Directividad respecto del radiador isotrópico (dBi). \\
+    Pérdidas en cables/conectores & Atenuación entre radio y antena (despreciable en equipos integrados). \\
+    Pérdida de propagación (FSPL) & Atenuación geométrica en espacio libre, función de $f$ y $d$. \\
+    Sensibilidad del receptor & Mínima potencia para demodular con BER aceptable (dBm). \\
+    Modulación y MCS & Complejidad de la modulación (BPSK\dots256QAM) y codificación. \\
+    \bottomrule
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{Parámetros principales (2/2)}
+  \small
+  \begin{tabularx}{\textwidth}{@{}p{3.6cm}L@{}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Descripción} \\ \midrule
+    RSSI & Potencia de la señal útil recibida (dBm). \\
+    Nivel de ruido & Energía no deseada en el canal: térmico, atmosférico, otras emisiones (dBm). \\
+    SNR & $\text{RSSI} - \text{Ruido}$ (dB); indispensable para modulaciones complejas. \\
+    Interferencias & Señales externas co-canal o de canal adyacente. \\
+    Margen de enlace & $P_{RX} - S_{RX}$ (dB); reserva ante desvanecimientos. \\
+    Capacidad / throughput & Tasa útil a nivel de aplicación (Mbps). \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{6pt}
+  \begin{block}{Ecuaciones de diseño}
+    \vspace{-8pt}
+    \begin{align*}
+      R_1 &= 17.32\sqrt{\frac{d_1\,d_2}{f\,D}}\ \text{[m]} &
+      A_0 &= 92.44 + 20\log f_{\text{GHz}} + 20\log d_{\text{km}}\ \text{[dB]}\\
+      P_{RX} &= P_{TX} - L_{TX} + G_{TX} - A_0 - A_{obs} + G_{RX} - L_{RX} &
+      \text{PIRE} &= P_{TX} + G_{TX} - L_{TX}
+    \end{align*}
+  \end{block}
+\end{frame}
