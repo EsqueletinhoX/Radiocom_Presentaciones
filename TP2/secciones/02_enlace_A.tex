@@ -44,7 +44,7 @@
     \column{0.32\textwidth}
     \begin{block}{Señal esperada}\centering\Large\EAprxSim\end{block}
     \column{0.32\textwidth}
-    \begin{block}{Capacidad (80 MHz)}\centering\Large 199 Mbps\end{block}
+    \begin{block}{Capacidad (20 MHz)}\centering\Large 88.4 Mbps\end{block}
   \end{columns}
 \end{frame}
 
@@ -184,12 +184,12 @@
 \begin{frame}{Atenuación de espacio libre y presupuesto de RF}
   \begin{columns}[T]
     \column{0.47\textwidth}
-    \textbf{FSPL} ($d$ en km, $f$ en MHz)
+    \textbf{FSPL} ($d$ en km, $f$ en GHz)
     \begin{align*}
-      \text{FSPL} &= 32.44 + 20\log(8.72) + 20\log(5500)\\
-                  &\approx \textbf{126.06 dB}
+      \text{FSPL} &= 92.44 + 20\log(8.72) + 20\log(5.8)\\
+                  &\approx \textbf{126.51 dB}
     \end{align*}
-    \small Frecuencia representativa de la banda: 5.5 GHz. UISP no expone el FSPL, solo la
+    \small Frecuencia representativa de la banda: 5.8 GHz. UISP no expone el FSPL, solo la
     señal esperada.
     \column{0.5\textwidth}
     \small
@@ -198,7 +198,7 @@
       $P_{TX}$ (ajuste automático) & \EAptx \\
       $L_{TX}$, $L_{RX}$ (InnerFeed) & 0 dB \\
       $G_{TX}$ & +23 dBi \\
-      FSPL & $-126.06$ dB \\
+      FSPL & $-126.51$ dB \\
       $L_{adicionales}$ (Fresnel despejada) & 0 dB \\
       $G_{RX}$ & +23 dBi \\ \midrule
       $P_{RX}$ \textbf{teórica} & \textbf{\EAprxTeo} \\
