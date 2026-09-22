@@ -11,7 +11,7 @@
 \newcommand{\EBunoLon}{$-64.2257361$}
 \newcommand{\EBunoCota}{460.5 m}      % cota del terreno (s.n.m.)
 \newcommand{\EBunoAlt}{25 m}          % altura de instalación
-\newcommand{\EBunoAntena}{485.6 m}    % cota total de la antena
+\newcommand{\EBunoAntena}{485.5 m}    % cota total de la antena
 \newcommand{\EBunoMax}{100 m}         % altura máxima disponible
 % ---- Estación 2 (extremo "B" del enlace)
 \newcommand{\EBdosNombre}{FCEFyN -- UNC}
@@ -20,12 +20,12 @@
 \newcommand{\EBdosLon}{$-64.194021$}
 \newcommand{\EBdosCota}{447.5 m}
 \newcommand{\EBdosAlt}{20 m}
-\newcommand{\EBdosAntena}{467.6 m}
+\newcommand{\EBdosAntena}{467.5 m}
 \newcommand{\EBdosMax}{50 m}
 % ---- Geometría
 \newcommand{\EBdist}{6.69 km}
-\newcommand{\EBazUnoDos}{153°}
-\newcommand{\EBazDosUno}{333°}
+\newcommand{\EBazUnoDos}{153° SSE}
+\newcommand{\EBazDosUno}{333° NNO}
 \newcommand{\EBtiltUno}{$-0.14$°}
 \newcommand{\EBtiltDos}{$+0.08$°}
 \newcommand{\EBdifTerreno}{13 m}
@@ -42,9 +42,9 @@
 \newcommand{\EBfrec}{5.8 GHz (5725--5850 MHz)}
 \newcommand{\EBfrecNum}{5.8}          % GHz, usada en FSPL
 \newcommand{\EBcanal}{40 MHz}
-\newcommand{\EBcapCanal}{184 Mbps}    % simulada, sin ruido urbano
-\newcommand{\EBcapRuido}{$\approx$80 Mbps}
-\newcommand{\EBcapReq}{50 Mbps full-duplex}
+\newcommand{\EBcapCanal}{91.8 Mbps}   % simulada con ruido urbano (UISP)
+\newcommand{\EBcapRuido}{$\approx$64 Mbps útiles}  % 70 % de 91.8 Mbps
+\newcommand{\EBcapReq}{50 Mbps útiles}
 % ---- Equipo y presupuesto
 \newcommand{\EBequipo}{Ubiquiti LiteBeam 5AC Gen2}
 \newcommand{\EBganancia}{23 dBi}
@@ -53,7 +53,7 @@
 \newcommand{\EBfspl}{124.22 dB}
 \newcommand{\EBprxTeo}{$-71.2$ dBm}
 \newcommand{\EBprxSim}{$-70$ dBm}
-\newcommand{\EBruido}{$-85$ dBm}
+\newcommand{\EBruido}{$-85$ dBm}        % urbano UISP (-88 dBm @20 MHz) escalado a 40 MHz
 \newcommand{\EBsnr}{15 dB}
 \newcommand{\EBmargenMax}{$-1$ dB (256QAM)}
 \newcommand{\EBmargenMed}{16 dB (16QAM)}

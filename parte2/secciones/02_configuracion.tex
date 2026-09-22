@@ -1,0 +1,53 @@
+% =============================================================
+%  2. CONFIGURACIÓN Y ESPECTRO (común)
+% =============================================================
+\renewcommand{\seccorta}{Configuración}
+\section{Configuración y análisis de espectro}
+
+\begin{frame}{Configuración básica}
+  \begin{columns}[c]
+    \column{0.45\textwidth}
+    \small
+    \begin{tabularx}{\linewidth}{@{}lL@{}}
+      \toprule
+      Modo & Bridge (capa 2) \\
+      Punto A & AP PtP -- 192.168.0.7 \\
+      Punto B & Station PtP -- 192.168.0.8 \\
+      Frec.\ de control & 5530 MHz \\
+      Frec.\ central & 5540 MHz \\
+      Canal & 5510 -- 5570 MHz (60 MHz) \\
+      Potencia TX & $-4$ dBm (automática, corta distancia) \\
+      SSID / seguridad & ubnt / WPA2 \\
+      \bottomrule
+    \end{tabularx}
+    \column{0.52\textwidth}\centering
+    \figura{config.jpg}{\linewidth}\\
+    {\scriptsize Basic Wireless Settings}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Panel principal en el laboratorio}
+  \centering
+  \figura{panel_inicial.jpg}{0.62\textwidth}\\[2pt]
+  \small Señal de $-44$/$-43$ dBm, piso de ruido de $-86$/$-85$ dBm y capacidad de
+  $\approx$448/443 Mbps en cada extremo.
+\end{frame}
+
+\begin{frame}{Análisis del espectro y selección de canal}
+  \begin{columns}[c]
+    \column{0.48\textwidth}\centering
+    \figura{site_survey.jpg}{\linewidth}\\
+    {\scriptsize Site Survey: sin redes de terceros}
+    \column{0.48\textwidth}\centering
+    \figura{ruido_rf.jpg}{\linewidth}\\
+    {\scriptsize Ambient RF Noise Level}
+  \end{columns}
+  \vspace{4pt}
+  \small
+  \begin{itemize}
+    \item Espectro predominantemente celeste ($\approx-125$ dBm), con picos aislados de $\approx-97$ dBm,
+          despreciables frente a una señal de $-44$ dBm.
+    \item Se conservan \textbf{5530 MHz} (sin picos en el segmento) y \textbf{60 MHz} de ancho
+          (entorno limpio $\Rightarrow$ máxima modulación).
+  \end{itemize}
+\end{frame}

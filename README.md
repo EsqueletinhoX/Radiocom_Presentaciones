@@ -39,3 +39,13 @@ git commit -m "Enlace A: relevamiento y Fresnel"
 git push -u origin enlace-a
 ```
 Luego se abre un Pull Request hacia `main`.
+
+## Parte 2 (carpeta `parte2/`)
+Presentación separada que reutiliza el estilo común (`config/estilo.tex`).
+```
+cd parte2
+latexmk -pdf main.tex
+```
+- `parte2/datos/grupos.tex`: qué grupo estuvo en cada extremo (AP / Station).
+- `parte2/secciones/05_grupos.tex`: diferencias y resultados del otro extremo (a completar).
+- Figuras propias en `parte2/figuras/`; las del otro grupo con prefijo `G2_`.

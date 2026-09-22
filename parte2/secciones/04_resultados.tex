@@ -1,0 +1,25 @@
+% =============================================================
+%  4. RESULTADOS (común)
+% =============================================================
+\renewcommand{\seccorta}{Resultados}
+\section{Resultados experimentales}
+
+\begin{frame}{Valores finales (60 MHz, antenas alineadas)}
+  \centering\small
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Valor} \\ \midrule
+    Frecuencia central / ancho de canal & 5540 MHz / 60 MHz \\
+    Potencia TX & $-4$ dBm \\
+    RSSI (combinado) & $-29$ dBm \\
+    Ruido (\emph{noise floor}) & $-86$ dBm \\
+    SNR & 57 dB \\
+    MCS & 8x (256QAM MIMO) \\
+    Latencia (ping) & mín.\ 1.13 ms / prom.\ 2.93 ms \\
+    Pérdida de paquetes & 0\,\% \\
+    Throughput A $\to$ B & 266.96 Mbps (limitado por la herramienta)* \\
+    Throughput B $\to$ A, jitter y pérdida UDP & No evaluados* \\
+    \bottomrule
+  \end{tabular}\\[4pt]
+  \raggedright\scriptsize *No se pudo ejecutar iPerf3; solo se usó el Speed Test embebido en la CPU del transceptor.
+\end{frame}

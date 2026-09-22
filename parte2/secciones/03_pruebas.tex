@@ -1,0 +1,189 @@
+% =============================================================
+%  3. PRUEBAS EN EL PASILLO (común)
+% =============================================================
+\renewcommand{\seccorta}{Pruebas}
+\section{Pruebas en el pasillo de la facultad}
+
+\begin{frame}{Ubicación del enlace y línea base}
+  \begin{columns}[c]
+    \column{0.42\textwidth}\centering
+    \figura{plano_pasillo.jpg}{\linewidth}\\
+    {\scriptsize Enlace de 70 m entre A y B}
+    \column{0.55\textwidth}
+    \small
+    \begin{itemize}
+      \item El laboratorio era demasiado chico para un equipo pensado para varios km:
+            se pasó al pasillo (\textbf{70 m}).
+      \item Misma configuración (5540 MHz, 60 MHz, roles).
+      \item Sin análisis de espectro en el pasillo: con el Punto B gestionado por Wi-Fi,
+            airView queda deshabilitado.
+      \item Línea base: $-29$/$-30$ dBm, $\Delta$ entre cadenas de 2 a 4 dB.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Comportamiento del enlace en el pasillo}
+  \begin{columns}[c]
+    \column{0.5\textwidth}\centering
+    \figura{panel_pasillo.jpg}{\linewidth}
+    \column{0.47\textwidth}
+    \small
+    \begin{block}{Capacidad y tráfico}
+      Capacidad de 443--454 Mbps (256QAM, 8x). Latencia base de 1 ms con picos de hasta
+      2.4 ms por \emph{multipath} en las paredes.
+    \end{block}
+    \begin{block}{Señal y ruido}
+      Caídas abruptas de $-28$ a $-56$ dBm por el paso de personas que obstruyen la primera
+      zona de Fresnel. Piso de ruido estable en $-86$ dBm.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Alineación y ajuste fino}
+  \begin{columns}[c]
+    \column{0.22\textwidth}\centering
+    \figura{alineadas.jpg}{\linewidth}\\ {\scriptsize Alineadas}
+    \column{0.26\textwidth}\centering
+    \figura{constelacion_alineadas.jpg}{\linewidth}\\ {\scriptsize 256QAM}
+    \column{0.22\textwidth}\centering
+    \figura{desalineadas.jpg}{\linewidth}\\ {\scriptsize Desalineadas ($\pm$90°)}
+    \column{0.26\textwidth}\centering
+    \figura{constelacion_desalineadas.jpg}{\linewidth}\\ {\scriptsize QPSK}
+  \end{columns}
+  \vspace{4pt}
+  \centering\small
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{Alineadas} & \textbf{Desalineadas} \\ \midrule
+    Señal local / remota & $-36$ / $-35$ dBm & $-54$ / $-52$ dBm \\
+    $\Delta$ entre cadenas (local / remoto) & 8 / 5 dB & 6 / 3 dB \\
+    Modulación & 256QAM & QPSK \\
+    \bottomrule
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Interpretación de la alineación}
+  \begin{itemize}
+    \item \textbf{Alineadas:} mucha potencia y 256QAM, pero con $\Delta=8$ dB: el
+          \emph{multipath} del piso y las paredes afecta distinto a cada polarización.
+          La constelación dispersa muestra el aumento del EVM.
+    \item \textbf{Desalineadas:} la señal cae $\approx$18 dB (lóbulos secundarios y rebotes) y
+          el algoritmo adaptativo baja a \textbf{QPSK}, priorizando robustez sobre capacidad.
+          El $\Delta$ baja porque ambas polarizaciones se degradan por igual.
+    \item \textbf{En ambos casos:} lecturas fluctuantes por el tránsito de estudiantes que
+          obstruye la primera zona de Fresnel.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pruebas de latencia (5 paquetes ICMP de 56 bytes)}
+  \begin{columns}[c]
+    \column{0.48\textwidth}\centering
+    \figura{ping_alineadas.jpg}{0.75\linewidth}\\ {\scriptsize Alineadas}
+    \column{0.48\textwidth}\centering
+    \figura{ping_desalineadas.jpg}{0.75\linewidth}\\ {\scriptsize Desalineadas}
+  \end{columns}
+  \vspace{4pt}
+  \centering\small
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+     & \textbf{Mín.} & \textbf{Prom.} & \textbf{Máx.} \\ \midrule
+    Alineadas (256QAM) & 1.133 ms & 2.93 ms & \textcolor{red}{8.103 ms} \\
+    Desalineadas (QPSK) & 2.103 ms & 3.13 ms & 5.45 ms \\
+    \bottomrule
+  \end{tabular}\\[3pt]
+  \raggedright\small 256QAM reduce el tiempo de aire (menor mínimo), pero es más sensible a
+  obstrucciones y rebotes (mayor jitter). QPSK sube la latencia base y amortigua los picos.
+\end{frame}
+
+\begin{frame}{Prueba de velocidad (Speed Test integrado)}
+  \begin{columns}[c]
+    \column{0.45\textwidth}\centering
+    \figura{speedtest.jpg}{\linewidth}
+    \column{0.52\textwidth}
+    \small
+    \begin{block}{Resultado}
+      RX máx.\ \textbf{266.96 Mbps} y ping de 1.35 ms, frente a 454 Mbps de capacidad
+      ($\approx$40\,\% menos).
+    \end{block}
+    \begin{itemize}
+      \item \textbf{CPU de la antena:} el Speed Test genera el tráfico en el propio equipo y
+            el procesador se satura antes que el radio.
+      \item \textbf{Overhead:} la capacidad es bruta; el test mide la tasa útil
+            (encabezados IP/MAC y cifrado WPA2).
+    \end{itemize}
+    $\Rightarrow$ La limitación es de la herramienta, no del enlace de RF.
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Pruebas de estrés con iPerf3}
+  \begin{alertblock}{No se pudo realizar}
+    iPerf3 necesita una PC cableada en cada extremo (cliente--servidor), y el Punto B se
+    gestionaba solo desde el celular.
+  \end{alertblock}
+  \vspace{4pt}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{block}{TCP}
+      \small Con acuses de recibo (ACK): mide la velocidad útil real, incluyendo
+      retransmisiones por un entorno inestable.
+    \end{block}
+    \column{0.48\textwidth}
+    \begin{block}{UDP}
+      \small Sin acuses de recibo: satura el canal y cuantifica la pérdida de paquetes y el
+      jitter frente a obstáculos o personas.
+    \end{block}
+  \end{columns}
+  \vspace{4pt}
+  \small Con PCs en los extremos, el tráfico lo generan las computadoras y las antenas
+  funcionan solo como puente transparente, sin el cuello de botella de su CPU.
+\end{frame}
+
+\begin{frame}{Variación del ancho de canal: 60 MHz vs.\ 10 MHz}
+  \begin{columns}[c]
+    \column{0.42\textwidth}\centering
+    \figura{panel_10mhz.jpg}{\linewidth}\\ {\scriptsize Panel a 10 MHz (alineadas)}
+    \column{0.56\textwidth}\centering
+    \footnotesize
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+       & \textbf{60 MHz} & \textbf{10 MHz} \\ \midrule
+      Señal (alineadas) & $-29$ dBm & $-26$ dBm \\
+      Piso de ruido & $-86$ dBm & $-92$ dBm \\
+      Capacidad & 454 Mbps & 64.7 Mbps \\
+      Modulación (alin.) & 8x 256QAM & 8x 256QAM \\
+      Modulación (desal.) & 2x QPSK & 6x 64QAM \\
+      Ping mín.\ / máx. & 1.13 / 8.10 ms & 2.42 / 2.91 ms \\
+      \bottomrule
+    \end{tabular}
+  \end{columns}
+  \vspace{6pt}
+  \small
+  \begin{itemize}
+    \item La señal no cambia (misma potencia y distancia); el ruido baja $\approx$6 dB
+          ($10\log 6 = 7.8$ dB teóricos) y mejora el SNR.
+    \item Un sexto del espectro $\Rightarrow$ capacidad $\approx$7 veces menor, aun con 256QAM.
+    \item Canal angosto: más latencia base, pero mucho menos jitter frente al \emph{multipath}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Obstrucción de la zona de Fresnel}
+  \begin{columns}[c]
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item No hizo falta introducir un obstáculo: el \textbf{tránsito de estudiantes}
+            funcionó como obstrucción dinámica.
+      \item A 5 GHz el cuerpo humano (alto contenido de agua) atenúa fuertemente la señal.
+      \item Efectos observados:
+      \begin{itemize}
+        \item caídas de $-28$ a $-56$ dBm,
+        \item fluctuaciones en la herramienta de alineación,
+        \item picos de latencia (jitter) por retransmisiones.
+      \end{itemize}
+    \end{itemize}
+    \column{0.42\textwidth}
+    \begin{alertblock}{Relación con la Parte 1}
+      Confirma por qué el diseño exige despejar al menos el \textbf{60\,\%} de la primera
+      zona de Fresnel para sostener el MCS y la capacidad.
+    \end{alertblock}
+  \end{columns}
+\end{frame}

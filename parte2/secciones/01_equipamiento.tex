@@ -1,0 +1,82 @@
+% =============================================================
+%  1. OBJETIVO, EQUIPAMIENTO Y MONTAJE (común)
+% =============================================================
+\renewcommand{\seccorta}{Equipamiento}
+\section{Objetivo y equipamiento}
+
+\begin{frame}{Objetivo y metodología}
+  \begin{block}{Parte 2}
+    Llevar a la práctica los conceptos de la Parte 1 con un enlace real de corta distancia
+    entre dos LiteBeam 5AC Gen2: configuración, análisis de espectro, alineación y pruebas de
+    rendimiento.
+  \end{block}
+  \vspace{4pt}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Etapas}
+    \begin{enumerate}
+      \item Reconocimiento del equipo y montaje.
+      \item Configuración básica en el laboratorio.
+      \item Pruebas en el pasillo de la facultad (70 m).
+    \end{enumerate}
+    \column{0.48\textwidth}
+    \textbf{Roles}
+    \begin{itemize}
+      \item \textbf{Punto A} (AP PtP, ``transmisor''): \grupoAP
+      \item \textbf{Punto B} (Station PtP, ``receptor''): \grupoST
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Ubiquiti LiteBeam 5AC Gen2}
+  \begin{columns}[c]
+    \column{0.42\textwidth}\centering
+    \figura{litebeam.jpg}{\linewidth}
+    \column{0.55\textwidth}
+    \small
+    \begin{itemize}
+      \item \textbf{Alimentador (InnerFeed):} radio, antena, alimentación y red integrados; sin cables coaxiales.
+      \item \textbf{Reflector parabólico:} 358 $\times$ 272 mm, perforado para reducir la carga de viento.
+      \item \textbf{Montaje:} ajuste independiente de azimut y elevación, con nivel de burbuja.
+      \item \textbf{Puerto RJ45 Gigabit:} datos + PoE pasivo 24 V / 0.3 A.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Partes del equipo}
+  \begin{columns}[c]
+    \column{0.32\textwidth}\centering
+    \figura{vista_inferior.jpg}{\linewidth}\\
+    {\scriptsize Vista inferior}
+    \column{0.32\textwidth}\centering
+    \figura{vista_lateral.jpg}{\linewidth}\\
+    {\scriptsize Vista lateral}
+    \column{0.32\textwidth}
+    \small
+    \textcolor[HTML]{7CB342}{\textbf{Verde:}} alimentador con puerto PoE y LEDs\\[3pt]
+    \textcolor[HTML]{F9A825}{\textbf{Amarillo:}} puerto RJ45\\[3pt]
+    \textcolor[HTML]{E53935}{\textbf{Rojo:}} ajuste de azimut\\[3pt]
+    \textcolor[HTML]{1E88E5}{\textbf{Azul:}} ajuste de elevación\\[3pt]
+    \textcolor[HTML]{7E57C2}{\textbf{Violeta:}} nivel de burbuja
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Montaje y conexión mediante inyector PoE}
+  \begin{columns}[c]
+    \column{0.3\textwidth}\centering
+    \figura{montaje.jpg}{\linewidth}\\
+    {\scriptsize Equipos preensamblados sobre trípodes}
+    \column{0.34\textwidth}\centering
+    \figura{poe.jpg}{\linewidth}
+    \column{0.32\textwidth}
+    \small
+    \begin{enumerate}
+      \item Solo alimentación.
+      \item Alimentación + LAN hacia PC, switch o router.
+      \item Gestión inalámbrica desde el celular (radio Wi-Fi de 2.4 GHz).
+    \end{enumerate}
+    \vspace{4pt}
+    \textbf{Laboratorio:} ambos puntos cableados a una PC.\\
+    \textbf{Pasillo:} Punto B solo alimentado y gestionado por Wi-Fi.
+  \end{columns}
+\end{frame}

@@ -51,6 +51,14 @@
 \end{frame}
 
 % ---------------------------------------------------------------
+\begin{frame}{Simulación en UISP Design Center}
+  \centering
+  \figura{B_uisp.jpg}{0.9\textwidth}\\[4pt]
+  \small LiteBeam 5AC Gen2 en ambos extremos, canal de 40 MHz, ruido urbano de $-88$ dBm:
+  señal esperada \EBprxSim, capacidad \EBcapCanal. UISP no tiene datos LIDAR en Córdoba.
+\end{frame}
+
+% ---------------------------------------------------------------
 \begin{frame}{Línea de vista y primera zona de Fresnel}
   \begin{columns}[c]
     \column{0.55\textwidth}
@@ -82,12 +90,12 @@
             señal esperada estable de \EBprxSim.
       \item \textbf{+5 m (30/25 m) y +10 m (35/30 m):} solo agregan margen ante futuras
             construcciones o grúas.
-      \item \textbf{Conclusión:} ya se supera el 60\,\% sin pérdidas por difracción; subir
+      \item \textbf{Conclusión:} ya se supera el 60\,\% recomendado, sin pérdidas por difracción; subir
             más no se justifica estructuralmente y complica el mantenimiento.
     \end{itemize}
     \column{0.42\textwidth}
     \centering
-    \figura{B_senal_uisp.png}{\linewidth}\\
+    \figura{B_senal_uisp.jpg}{\linewidth}\\
     {\scriptsize Señal esperada en UISP Design Center}
   \end{columns}
 \end{frame}
@@ -97,9 +105,8 @@
   \begin{block}{Banda elegida: \EBfrec}
     \begin{itemize}
       \item Res. 581-MM/2018 y Res. 4653/2019-ENACOM (STIC-UC, uso compartido sin licencia).
-      \item En PtP fijo permite antenas de alta ganancia \textbf{sin reducir la potencia máxima}
-            del transmisor (en 2.4 GHz o 5.2 GHz habría que atenuar).
-      \item \textbf{No exige DFS} (obligatorio en sub-bandas medias para evitar radares).
+      \item En enlaces fijos PtP permite antenas de alta ganancia \textbf{sin reducir la potencia
+            del transmisor}, a diferencia de las sub-bandas inferiores.
     \end{itemize}
   \end{block}
   \small
@@ -107,39 +114,36 @@
     \toprule
     Banda & 5725 -- 5850 MHz \\
     Condición de uso & Compartido, sin licencia (STIC-UC) \\
-    Normativa & Res. 581-MM/2018, Res. 4653/2019-ENACOM \\
-    Restricción & Sin reducción de potencia por antenas de alta ganancia en PtP \\
+    Límites & 30 dBm conducidos / 36 dBm PIRE (sin reducción por ganancia en PtP) \\
+    Operación del enlace & 7 dBm conducidos / 30 dBm PIRE \\
+    Restricciones & No interferir a servicios primarios ni reclamar protección frente a ellos \\
     \bottomrule
   \end{tabularx}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Selección del ancho de canal}
-  \begin{columns}[c]
-    \column{0.45\textwidth}
-    \centering
-    Simulación con $P_{RX}=$ \EBprxSim\ constante:\\[4pt]
-    \begin{tabular}{cc}
-      \toprule
-      \textbf{Ancho} & \textbf{Capacidad} \\ \midrule
-      10 MHz & 49.7 Mbps \\
-      20 MHz & 88.4 Mbps \\
-      \rowcolor{naranja!25} 40 MHz & 184 Mbps \\
-      80 MHz & 298 Mbps \\
-      \bottomrule
-    \end{tabular}
-    \column{0.52\textwidth}
-    \small
-    \begin{itemize}
-      \item \textbf{10 MHz:} máxima densidad de potencia y SNR.
-      \item \textbf{20 MHz:} gran estabilidad en entornos ruidosos.
-      \item \textbf{40 MHz:} ocupación moderada del espectro.
-      \item \textbf{80 MHz:} el receptor capta mucho más ruido; sube el piso de ruido.
-    \end{itemize}
-    \begin{alertblock}{Selección: \EBcanal}
-      Compromiso entre capacidad (\EBcapCanal) y exposición al ruido.
-    \end{alertblock}
-  \end{columns}
+  \small
+  UISP con ruido \textbf{Urban} ($-88$ dBm, referido a 20 MHz y escalado con $10\log B$), $P_{RX}=$ \EBprxSim:\\[4pt]
+  \centering
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    \textbf{Ancho de canal} & 10 MHz & 20 MHz & \cellcolor{naranja!25}\textbf{40 MHz} & 80 MHz \\ \midrule
+    Capacidad (UISP) & 44.2 Mbps & 66.3 Mbps & \cellcolor{naranja!25}91.8 Mbps & 149 Mbps \\
+    Modulación (UISP) & 6x 64QAM & 4x 16QAM & \cellcolor{naranja!25}4x 16QAM & 2x QPSK \\
+    Ruido térmico $-174+10\log B$ & $-104$ & $-101$ & \cellcolor{naranja!25}$-98$ & $-95$ dBm \\
+    Ruido urbano & $-91$ & $-88$ & \cellcolor{naranja!25}$-85$ & $-82$ dBm \\
+    SNR & 21 dB & 18 dB & \cellcolor{naranja!25}15 dB & 12 dB \\
+    Throughput ($\approx$70\,\%) & $\sim$31 & \textcolor{red}{$\sim$46} & \cellcolor{naranja!25}\textbf{$\sim$64} & $\sim$104 Mbps \\
+    \bottomrule
+  \end{tabular}
+  \raggedright
+  \vspace{6pt}
+  \begin{alertblock}{Selección: \EBcanal}
+    Único ancho que cumple los 50 Mbps con modulación estable: 20 MHz no alcanza
+    ($\sim$46 Mbps) y 80 MHz cae a QPSK con SNR de 12 dB. El ruido urbano queda
+    $\approx$13 dB sobre el térmico (figura de ruido + emisiones de la ciudad).
+  \end{alertblock}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -181,13 +185,13 @@
     \item Sin demanda estipulada: se fija \textbf{\EBcapReq} como mínimo.
     \item Suficiente para tráfico institucional: video comprimido (H.264/H.265),
           telefonía IP y acceso a bases de datos.
-    \item Simulación con \EBcanal\ y \textbf{ruido RF urbano}: baja la modulación y la capacidad
-          se estabiliza cerca de \textbf{\EBcapRuido}.
+    \item Con \EBcanal\ y \textbf{ruido urbano}, UISP negocia 16QAM y una capacidad de
+          \textbf{\EBcapCanal} $\Rightarrow$ throughput esperado \textbf{\EBcapRuido}.
   \end{itemize}
   \vspace{6pt}
   \begin{block}{Verificación en el peor escenario}
     \centering\large
-    Capacidad bajo ruido (\EBcapRuido) \;$>$\; Requerida (50 Mbps) \checkmark
+    Throughput esperado ($\approx$64 Mbps) \;$>$\; Requerido (50 Mbps) \checkmark
   \end{block}
   \vspace{4pt}
   \small Se prioriza estabilidad y disponibilidad por sobre picos teóricos inalcanzables en
@@ -209,7 +213,7 @@
     \small
     \begin{tabular}{@{}lr@{}}
       \toprule
-      $P_{TX}$ (límite PIRE $-$ $G$) & \EBptx \\
+      $P_{TX}$ (criterio conservador) & \EBptx \\
       $L_{TX}$, $L_{RX}$ (InnerFeed) & 0 dB \\
       $G_{TX}$ & +23 dBi \\
       $A_0$ & $-124.2$ dB \\
@@ -232,14 +236,26 @@
   \[
     \text{PIRE} = P_{TX} + G_{TX} = 7\ \text{dBm} + 23\ \text{dBi} = \textbf{30 dBm (1 W)}
   \]
-  \begin{itemize}
-    \item El modo ``Auto'' de UISP para Argentina fija \textbf{AR EIRP Limit 30 dBm}.
-    \item Por eso la potencia del radio queda en \EBptx\ (el equipo admite hasta 25 dBm).
-    \item Coincide con el máximo de PIRE de la Res. 581-MM/2018 para las porciones
-          inferiores y medias de la banda de 5 GHz.
-  \end{itemize}
-  % REVISAR: en 5725-5850 MHz la norma no exige reducir potencia por alta ganancia,
-  % así que el límite de 30 dBm podría ser conservador. Confirmar con la resolución.
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{block}{Res. 581-MM/2018, 5725--5850 MHz}
+      \small
+      \begin{itemize}
+        \item Potencia conducida máx.: \textbf{30 dBm}
+        \item PIRE máx.: \textbf{36 dBm}
+        \item PtP fijo: antenas de alta ganancia sin reducir potencia
+      \end{itemize}
+      Con 7 dBm / 30 dBm el enlace cumple \textbf{holgadamente}.
+    \end{block}
+    \column{0.46\textwidth}
+    \begin{alertblock}{¿Por qué 7 dBm?}
+      \small
+      UISP (modo Auto, Argentina) limita la PIRE a 30 dBm, el valor de las sub-bandas
+      5250--5725 MHz. Se adopta como \textbf{criterio conservador}: en banda compartida
+      conviene la mínima potencia que asegure el enlace, sin elevar el piso de ruido
+      ni interferir a otros usuarios.
+    \end{alertblock}
+  \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -256,13 +272,15 @@
       \bottomrule
     \end{tabular}
     \[ M = P_{RX} - S_{RX} \]
+    {\scriptsize Sensibilidades del fabricante con ruido térmico: en entorno urbano el margen
+    efectivo es menor y manda el SNR.}
     \column{0.47\textwidth}
     \small
     \begin{itemize}
-      \item \textbf{256QAM:} margen nulo/negativo, no sostenible.
-      \item \textbf{16QAM:} margen excelente, enlace robusto.
+      \item \textbf{256QAM:} margen negativo, no sostenible.
+      \item \textbf{16QAM:} margen de 16 dB por sensibilidad.
       \item \textbf{Rate Adaptation (airOS):} baja el MCS al achicarse el margen; la
-            sensibilidad mejora hasta $-96$ dBm y el enlace \textbf{no se corta},
+            sensibilidad mejora hasta $-96$ dBm (BPSK) y el enlace \textbf{no se corta},
             a costa de menos bits/Hz y menor throughput.
     \end{itemize}
   \end{columns}
@@ -270,16 +288,19 @@
 
 % ---------------------------------------------------------------
 \begin{frame}{Nivel de ruido y SNR}
-  Piso de ruido asumido para la ciudad de Córdoba: \EBruido
+  Ruido urbano de UISP escalado a 40 MHz: \EBruido
   \[
     \text{SNR} = P_{RX} - P_{ruido} = -70 - (-85) = \textbf{\EBsnr}
   \]
   \begin{itemize}
-    \item Adecuado para 16QAM ($\approx$15--18 dB); insuficiente para 256QAM ($>$32 dB).
+    \item Alcanza para 16QAM ($\approx$15--18 dB), coincide con el 4x de UISP;
+          insuficiente para 256QAM ($>$32 dB).
+    \item Está en el \textbf{límite inferior} de 16QAM: ante desvanecimientos podría bajar a
+          QPSK $\Rightarrow$ se puede subir $P_{TX}$ dentro de la norma.
   \end{itemize}
   \vspace{4pt}
   \begin{center}
-    \begin{tikzpicture}[node distance=1.9cm, every node/.style={draw=verde, fill=grisclaro,
+    \begin{tikzpicture}[every node/.style={draw=verde, fill=grisclaro,
         rounded corners, font=\small, minimum height=0.8cm, align=center}]
       \node (a) {Ruido $\uparrow$};
       \node[right=0.8cm of a] (b) {SNR $\downarrow$};
@@ -289,7 +310,6 @@
       \foreach \x/\y in {a/b,b/c,c/d,d/e} \draw[->,thick,naranja] (\x) -- (\y);
     \end{tikzpicture}
   \end{center}
-  \small El RSSI por sí solo no garantiza calidad.
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -298,8 +318,8 @@
     \column{0.48\textwidth}
     \begin{block}{Pérdidas por obstáculos}
       \small
-      Despeje real de \EBdespeje\ sobre \EBrFresnel\ ($\approx$89\,\%).
-      Al superar el umbral del 60\,\% (\EBrSesenta), según las recomendaciones UIT
+      Despeje real de \EBdespeje\ sobre \EBrFresnel\ (\EBdespejePct).
+      Al superar el 60\,\% (\EBrSesenta), según las recomendaciones UIT
       $A_{obs}=0$ dB.
     \end{block}
     \begin{block}{Interferencias}
@@ -313,10 +333,9 @@
       \small
       \begin{itemize}
         \item Cota más baja (\EBdosCota\ vs.\ \EBunoCota).
-        \item Apunta al N/NO: su lóbulo frontal abarca la densidad edilicia y las redes
+        \item Apunta al NNO: su lóbulo frontal abarca la densidad edilicia y las redes
               Wi-Fi de Nueva Córdoba y el Centro.
-        \item Canal 12 irradia hacia abajo (\EBtiltUno); la facultad ``mira'' hacia arriba
-              (\EBtiltDos) $\Rightarrow$ más expuesta al ruido de fondo.
+        \item Canal 12 está más elevado y en una zona residencial de menor densidad.
       \end{itemize}
     \end{alertblock}
   \end{columns}
@@ -375,16 +394,16 @@
 % ---------------------------------------------------------------
 \begin{frame}{Optimización del enlace}
   \begin{block}{Configuración propuesta}
-    \EBequipo, \EBunoAlt/\EBdosAlt, canal de \EBcanal\ en 5.8 GHz
+    \EBequipo, \EBunoAlt/\EBdosAlt, canal de \EBcanal\ en 5.8 GHz, $P_{TX}=$ \EBptx
   \end{block}
   \small
   \begin{tabularx}{\textwidth}{@{}lL@{}}
     \toprule
     \textbf{Alternativa} & \textbf{Evaluación} \\ \midrule
-    Canal de 80 MHz & Más velocidad ``de laboratorio'' pero menor SNR. \\
-    Mayor altura & Más costo, exposición a descargas y cableado más largo, sin mejora real. \\
+    Canal de 80 MHz & Más capacidad teórica, pero con ruido urbano el SNR cae a 12 dB y queda en QPSK. \\
+    Mayor altura & Más costo y exposición a descargas; el despeje de Fresnel ya está garantizado. \\
     Antenas de mayor ganancia & Encarece el proyecto y suma carga de viento; $-70$ dBm ya alcanza. \\
-    Ajustar el ancho de canal & \textbf{Mejora posible:} adecuarlo a la demanda real del enlace. \\
+    \textbf{Mayor potencia} & \textbf{Mejora posible:} la norma permite subir de 7 a 25 dBm (máx.\ del equipo) si el ruido medido con airView supera lo estimado. \\
     \bottomrule
   \end{tabularx}
 \end{frame}

@@ -20,7 +20,7 @@
     $P_{RX}$ teórica / simulada & \EAprxTeo\ / \EAprxSim & \EBprxTeo\ / \EBprxSim \\
     Ruido / SNR & \EAruido\ / \EAsnr & \EBruido\ / \EBsnr \\
     Capacidad requerida & \EAcapReq & \EBcapReq \\
-    Capacidad disponible & \EAcapRuido & \EBcapRuido \\
+    Throughput esperado & \EAcapRuido & \EBcapRuido \\
     \bottomrule
   \end{tabularx}
 \end{frame}
@@ -39,12 +39,13 @@
     \end{itemize}
     \column{0.5\textwidth}
     \begin{itemize}
-      \item \textbf{Ruido:} A usa ruido térmico ($-101$ dBm $\Rightarrow$ SNR 29 dB); B asume
-            ruido urbano ($-85$ dBm $\Rightarrow$ SNR 15 dB). La elección del piso de ruido cambia
-            por completo la modulación esperada.
-      \item \textbf{Potencia:} A: 8 dBm / 31 dBm PIRE; B: 7 dBm / 30 dBm (límite AR de UISP).
+      \item \textbf{Ruido:} A usa ruido térmico ($-101$ dBm a 20 MHz $\Rightarrow$ SNR 29 dB);
+            B usa el ruido urbano de UISP ($-85$ dBm a 40 MHz $\Rightarrow$ SNR 15 dB). La
+            elección del piso de ruido cambia por completo la modulación esperada.
+      \item \textbf{Potencia:} A: 8 dBm / 31 dBm PIRE; B: 7 dBm / 30 dBm, por debajo del
+            límite de 36 dBm de 5725--5850 MHz (criterio conservador).
       \item \textbf{Tráfico:} A, 40 Mbps asimétrico (video en vivo, $<$15 ms);
-            B, 50 Mbps full-duplex institucional.
+            B, 50 Mbps útiles de tráfico institucional.
     \end{itemize}
   \end{columns}
 \end{frame}

@@ -24,14 +24,14 @@
         \item La validación 3D en Google Earth fue indispensable porque UISP subestima los edificios.
         \item Con \EBunoAlt/\EBdosAlt\ se despeja el \EBdespejePct\ de Fresnel ($A_{obs}=0$).
         \item $P_{RX}$ teórica \EBprxTeo\ vs.\ simulada \EBprxSim: diferencia $\approx$1.2 dB.
-        \item SNR de \EBsnr\ $\Rightarrow$ 16QAM; $\approx$80 Mbps $>$ 50 Mbps requeridos.
+        \item Con ruido urbano: SNR de \EBsnr\ $\Rightarrow$ 16QAM; $\approx$64 Mbps útiles $>$ 50 Mbps requeridos.
       \end{itemize}
     \end{block}
   \end{columns}
   \vspace{4pt}
   \begin{alertblock}{Generales}
     \small En entornos urbanos sin LIDAR, el obstáculo real son los edificios y debe validarse en 3D.
-    El diseño es un compromiso entre capacidad, robustez frente al ruido y costo; la modulación
+    El piso de ruido supuesto define la modulación y la capacidad: el diseño es un compromiso entre capacidad, robustez frente al ruido y costo; la modulación
     adaptativa mantiene el enlace ante degradaciones, y en banda compartida la potencia debe
     ser la mínima necesaria dentro del límite de PIRE.
   \end{alertblock}
