@@ -1,16 +1,28 @@
 % =============================================================
-%  ENLACE A: [COMPLETAR]
-%  Responsables: [COMPLETAR]
-%  Misma estructura que el Enlace B (secciones/03_enlace_B.tex).
-%  1) Completar los números en datos/enlace_A.tex
-%  2) Reemplazar cada \completar[...] por el texto propio
-%  3) Figuras en figuras/A_*.png|jpg
+%  ENLACE A: FCEFyN -- Canal 10
+%  Responsables: Mendes Rosa, Monja
+%  Los números salen de datos/enlace_A.tex
 % =============================================================
 \renewcommand{\seccorta}{Enlace A}
 \section{Enlace A: \EAnombre}
 
 % ---------------------------------------------------------------
-\begin{frame}{Definición del enlace y relevamiento geográfico}
+\begin{frame}{Definición del enlace}
+  \begin{columns}[c]
+    \column{0.48\textwidth}\centering
+    \figura{A_canal10.jpg}{\linewidth}\\
+    {\scriptsize Mástil de Canal 10 (máx.\ \EAdosMax)}
+    \column{0.48\textwidth}\centering
+    \figura{A_avion_fcefyn.jpg}{\linewidth}\\
+    {\scriptsize Avión de la FCEFyN (máx.\ \EAunoMax)}
+  \end{columns}
+  \vspace{6pt}
+  \small Herramientas: \textbf{UISP Design Center} (perfil, Fresnel, atenuación, RSSI,
+  capacidad) y \textbf{Google Earth Pro} (geolocalización y verificación visual de la LOS).
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Relevamiento geográfico}
   \small
   \begin{tabularx}{\textwidth}{@{}lLL@{}}
     \toprule
@@ -18,107 +30,104 @@
     Ubicación & \EAunoUbic & \EAdosUbic \\
     Latitud / Longitud & \EAunoLat\ / \EAunoLon & \EAdosLat\ / \EAdosLon \\
     Cota del terreno (s.n.m.) & \EAunoCota & \EAdosCota \\
-    Altura máxima disponible & \EAunoMax & \EAdosMax \\
+    Altura máxima disponible & \EAunoMax\ (mástil) & \EAdosMax\ (mástil) \\
     Altura de instalación propuesta & \textbf{\EAunoAlt} & \textbf{\EAdosAlt} \\
     Cota total de la antena & \EAunoAntena & \EAdosAntena \\
-    Azimut & \EAazUnoDos\ (A$\to$B) & \EAazDosUno\ (B$\to$A) \\
-    Elevación (tilt) & \EAtiltUno & \EAtiltDos \\
+    Azimut & \EAazUnoDos\ N (A$\to$B) & \EAazDosUno\ S (B$\to$A) \\
+    Elevación (tilt) & \EAtiltUno\ (up-tilt) & \EAtiltDos\ (down-tilt) \\
     \bottomrule
   \end{tabularx}
   \vspace{6pt}
   \begin{columns}[T]
     \column{0.32\textwidth}
-    \begin{block}{Distancia}\centering\EAdist\end{block}
+    \begin{block}{Distancia}\centering\Large\EAdist\end{block}
     \column{0.32\textwidth}
-    \begin{block}{$\Delta$ terreno}\centering\EAdifTerreno\end{block}
+    \begin{block}{Señal esperada}\centering\Large\EAprxSim\end{block}
     \column{0.32\textwidth}
-    \begin{block}{$\Delta$ antenas}\centering\EAdifAntenas\end{block}
+    \begin{block}{Capacidad (80 MHz)}\centering\Large 199 Mbps\end{block}
   \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
-\begin{frame}{Perfil del terreno y obstáculos}
+\begin{frame}{Perfil del enlace (UISP Design Center)}
+  \centering
+  \figura{A_uisp.jpg}{0.85\textwidth}\\[4pt]
+  \small UISP advierte que \textbf{no hay datos LIDAR} en Córdoba: el perfil representa solo
+  el suelo natural, sin edificios.
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Línea de vista directa}
+  \begin{columns}[c]
+    \column{0.48\textwidth}\centering
+    \figura{A_ge_fcefyn.jpg}{\linewidth}\\
+    {\scriptsize Extremo FCEFyN (Google Earth)}
+    \column{0.48\textwidth}\centering
+    \figura{A_ge_canal10.jpg}{\linewidth}\\
+    {\scriptsize Extremo Canal 10 (Google Earth)}
+  \end{columns}
+  \vspace{6pt}
+  \centering Se verifica una \textbf{LOS directa e ininterrumpida} entre ambas estaciones.
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Zona de Fresnel y obstáculo crítico}
   \begin{columns}[c]
     \column{0.52\textwidth}
-    \begin{itemize}
-      \item Herramientas: \completar[UISP / Google Earth]
-      \item Tipo de topografía: \completar
-      \item Obstáculo crítico: \EAobstaculo, a $d_1=\EAdUno$ km de la Est.~A
-      \item Diferencias entre UISP y Google Earth 3D: \completar
-    \end{itemize}
-    \column{0.45\textwidth}\centering
-    \figura{A_perfil.png}{\linewidth}
-  \end{columns}
-\end{frame}
-
-% ---------------------------------------------------------------
-\begin{frame}{Línea de vista y primera zona de Fresnel}
-  \begin{columns}[c]
-    \column{0.55\textwidth}
     \small
+    Radio máximo en el centro del vano ($d_1=d_2=\EAdUno$ km, $f=\EAfrecNum$ GHz):
     \[
-      R_1 = 17.32\sqrt{\frac{\EAdUno\times\EAdDos}{\EAfrecNum\times D}} = \textbf{\EArFresnel}
+      R_1 = 17.32\sqrt{\frac{\EAdUno\times\EAdDos}{\EAfrecNum\times 8.72}} = \textbf{\EArFresnel}
     \]
     \begin{itemize}
-      \item Despeje mínimo (60\,\% de $R_1$): \EArSesenta
-      \item Despeje medido: \EAdespeje
-      \item Despeje logrado: \EAdespejePct\ de $R_1$
+      \item Despeje mínimo (60\,\%): \textbf{\EArSesenta}
+      \item Obstáculo más cercano a la trayectoria: \textbf{edificio a 5.35 km} del origen.
+      \item Con \EAunoAlt\ / \EAdosAlt\ se cumple despeje \EAdespejePct\
+            $\Rightarrow$ sin pérdidas por difracción.
     \end{itemize}
-    \column{0.42\textwidth}\centering
-    \figura{A_google_earth.jpg}{\linewidth}
+    \column{0.45\textwidth}\centering
+    \figura{A_obstaculo.jpg}{\linewidth}\\
+    {\scriptsize Obstrucción más importante del enlace}
   \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Determinación de las alturas mínimas de antena}
-  \begin{columns}[c]
-    \column{0.55\textwidth}
-    \small
-    \begin{itemize}
-      \item Alturas mínimas: \EAunoAlt\ / \EAdosAlt\ $\Rightarrow$ señal esperada \EAprxSim
-      \item Efecto de subir +5 m: \completar
-      \item Efecto de subir +10 m: \completar
-      \item Conclusión: \completar
-    \end{itemize}
-    \column{0.42\textwidth}\centering
-    \figura{A_senal_uisp.png}{\linewidth}
-  \end{columns}
-\end{frame}
-
-% ---------------------------------------------------------------
-\begin{frame}{Selección de frecuencia y marco regulatorio}
-  \begin{block}{Banda elegida: \EAfrec}
-    Justificación: \completar
-  \end{block}
-  \small
-  \begin{tabularx}{\textwidth}{@{}lL@{}}
-    \toprule
-    Banda & \completar \\
-    Condición de uso & \completar \\
-    Normativa & \completar \\
-    Restricciones & \completar \\
-    \bottomrule
-  \end{tabularx}
+  \begin{itemize}
+    \item Proceso iterativo: se evaluó bajar de \EAunoAlt\ (FCEFyN) y \EAdosAlt\ (Canal 10).
+    \item Al reducir alturas, el elipsoide de Fresnel desciende y se acerca peligrosamente a la
+          edificación.
+    \item Sin datos LIDAR, UISP ignora edificios: acercar el haz al suelo implica chocar con
+          estructuras no modeladas.
+  \end{itemize}
+  \begin{alertblock}{Conclusión}
+    \EAunoAlt\ / \EAdosAlt\ son el \textbf{mínimo indispensable} para mantener el 60\,\% de
+    despeje; subir más solo agrega costo y carga al viento.
+  \end{alertblock}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Selección del ancho de canal}
-  \begin{columns}[c]
-    \column{0.45\textwidth}\centering
-    \begin{tabular}{cc}
-      \toprule
-      \textbf{Ancho} & \textbf{Capacidad} \\ \midrule
-      10 MHz & \completar \\
-      20 MHz & \completar \\
-      40 MHz & \completar \\
-      80 MHz & \completar \\
-      \bottomrule
-    \end{tabular}
-    \column{0.52\textwidth}
-    \begin{alertblock}{Selección: \EAcanal}
-      \completar[justificación]
-    \end{alertblock}
-  \end{columns}
+  \small
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    \textbf{Ancho de canal} & 10 MHz & \cellcolor{naranja!25}\textbf{20 MHz} & 40 MHz & 80 MHz \\ \midrule
+    Capacidad (UISP) & 44.2 Mbps & \cellcolor{naranja!25}88.4 Mbps & 138 Mbps & 199 Mbps \\
+    Ruido $N=-174+10\log B$ & $-104$ dBm & \cellcolor{naranja!25}$-101$ dBm & $-98$ dBm & $-95$ dBm \\
+    SNR ($P_{RX}=-72$ dBm) & 32 dB & \cellcolor{naranja!25}29 dB & 26 dB & 23 dB \\
+    Susceptibilidad a interf. & Baja & \cellcolor{naranja!25}Media & Alta & Muy alta \\
+    Estabilidad & Muy alta & \cellcolor{naranja!25}Alta & Media & Baja \\
+    Throughput esperado & $\sim$33 Mbps & \cellcolor{naranja!25}$\sim$63 Mbps & $\sim$112 Mbps & $\sim$149 Mbps \\
+    \bottomrule
+  \end{tabular}
+  \vspace{6pt}
+  \begin{itemize}
+    \item Cada duplicación del ancho suma $\approx$3 dB de ruido; throughput $\approx$70--75\,\% de la capacidad.
+  \end{itemize}
+  \begin{alertblock}{Selección: \EAcanal}
+    Equilibrio capacidad/estabilidad en entorno urbano: SNR de \EAsnr\ y $\sim$63 Mbps útiles,
+    sacrificando capacidad máxima (199 $\to$ 88.4 Mbps) a cambio de confiabilidad.
+  \end{alertblock}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -128,39 +137,46 @@
     \column{0.52\textwidth}
     \begin{tabularx}{\linewidth}{@{}lL@{}}
       \toprule
-      Modelo & \completar \\
-      Banda & \completar \\
-      Potencia máx. TX & \completar \\
-      Sensibilidad & \completar \\
-      Modulación / MCS & \completar \\
-      Anchos de canal & \completar \\
-      Throughput máx. & \completar \\
-      Antena / ganancia & \EAganancia \\
-      Interfaz / alimentación & \completar \\
+      Modelo & LBE-5AC-Gen2 (ambos extremos) \\
+      Banda & 5150--5875 MHz + radio de gestión 2.4 GHz (UNMS) \\
+      Potencia máx. TX & 25 dBm \\
+      Sensibilidad & $-96$ dBm (1x BPSK) a $-65$ dBm (8x 256QAM) \\
+      Modulación / MCS & airMAX ac, 1x (BPSK) a 8x (256QAM) \\
+      Anchos PtP & 10/20/30/40/50/60/80 MHz \\
+      Interfaz & 1 $\times$ Gigabit Ethernet \\
+      Alimentación & PoE pasivo 24 V $\pm$10\,\%, 0.3 A; 7 W \\
+      Antena & InnerFeed, \EAganancia, dual lineal \\
+      Ambiente & $-40$ a 70\,°C; 5--95\,\% HR; 200 km/h \\
       \bottomrule
     \end{tabularx}
     \column{0.45\textwidth}
     \textbf{Justificación}
     \begin{itemize}
-      \item Distancia: \completar
-      \item Capacidad: \completar
-      \item Frecuencia: \completar
-      \item Interferencias: \completar
-      \item Margen: \completar
-      \item Costo/disponibilidad: \completar
+      \item \textbf{Distancia:} 23 dBi óptimos para \EAdist; haz estrecho frente al FSPL.
+      \item \textbf{Margen y capacidad:} 25 dBm TX y $-96$ dBm de sensibilidad; puerto Gigabit.
+      \item \textbf{Interferencias:} 5 GHz evita la saturación de 2.4 GHz; el reflector filtra
+            espacialmente el ruido periférico.
+      \item \textbf{Costo:} bajo, liviano y disponible en el mercado local.
     \end{itemize}
   \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Capacidad requerida}
-  \begin{itemize}
-    \item Capacidad mínima definida: \EAcapReq
-    \item Justificación del tráfico: \completar
-    \item Capacidad simulada con ruido: \EAcapRuido
-  \end{itemize}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lL@{}}
+    \toprule
+    Throughput mínimo & \textbf{40 Mbps}: varios flujos HD o uno 4K desde el canal + gestión y telemetría \\
+    Sentido del tráfico & Bidireccional asimétrico; mayor carga en downlink Canal 10 $\to$ FCEFyN \\
+    Tipo de tráfico & Mixto con prioridad en tiempo real: UDP (streaming/multicast) + TCP (archivos, bases de datos, monitoreo) \\
+    Latencia deseada & $<$15 ms y jitter mínimo (sincronía audio/video) \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{6pt}
   \begin{block}{Verificación}
-    \centering Capacidad disponible (\EAcapRuido) $>$ requerida (\EAcapReq)\,?
+    \centering
+    Capacidad 88.4 Mbps $\times$ 70--75\,\% $\approx$ \textbf{63 Mbps} \;$>$\; 40 Mbps \checkmark
+    \quad(margen $\approx$23 Mbps)
   \end{block}
 \end{frame}
 
@@ -168,91 +184,212 @@
 \begin{frame}{Atenuación de espacio libre y presupuesto de RF}
   \begin{columns}[T]
     \column{0.47\textwidth}
-    \[
-      A_0 = 92.44 + 20\log f + 20\log d = \textbf{\EAfspl}
-    \]
-    \small Extremo más crítico y por qué: \completar
-    \column{0.5\textwidth}\small
+    \textbf{FSPL} ($d$ en km, $f$ en MHz)
+    \begin{align*}
+      \text{FSPL} &= 32.44 + 20\log(8.72) + 20\log(5500)\\
+                  &\approx \textbf{126.06 dB}
+    \end{align*}
+    \small Frecuencia representativa de la banda: 5.5 GHz. UISP no expone el FSPL, solo la
+    señal esperada.
+    \column{0.5\textwidth}
+    \small
     \begin{tabular}{@{}lr@{}}
       \toprule
-      $P_{TX}$ & \EAptx \\
-      $L_{TX}$, $L_{RX}$ & \completar \\
-      $G_{TX}$ = $G_{RX}$ & \EAganancia \\
-      $A_0$ & \EAfspl \\
-      $A_{obs}$ & \completar \\ \midrule
-      $P_{RX}$ teórica & \EAprxTeo \\
-      $P_{RX}$ simulada & \EAprxSim \\
+      $P_{TX}$ (ajuste automático) & \EAptx \\
+      $L_{TX}$, $L_{RX}$ (InnerFeed) & 0 dB \\
+      $G_{TX}$ & +23 dBi \\
+      FSPL & $-126.06$ dB \\
+      $L_{adicionales}$ (Fresnel despejada) & 0 dB \\
+      $G_{RX}$ & +23 dBi \\ \midrule
+      $P_{RX}$ \textbf{teórica} & \textbf{\EAprxTeo} \\
+      $P_{RX}$ \textbf{simulada (UISP)} & \textbf{\EAprxSim} \\
       \bottomrule
     \end{tabular}
   \end{columns}
   \vspace{6pt}
-  \begin{alertblock}{Discrepancia teoría vs.\ simulación}
-    \completar
+  \begin{block}{Resultado}
+    El cálculo manual concuerda con la simulación (diferencia $<$0.1 dB).
+  \end{block}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{PIRE y verificación regulatoria}
+  \[
+    \text{PIRE} = P_{TX} - L_{TX} + G_{TX} = 8 - 0 + 23 = \textbf{31 dBm ($\approx$1.26 W)}
+  \]
+  \begin{itemize}
+    \item ENACOM fija límites de PIRE en 5 GHz de \textbf{30 dBm (1 W) a 36 dBm (4 W)}
+          según la sub-banda (5.15--5.85 GHz).
+    \item Con 31 dBm el enlace se declara dentro de la normativa, con emisión controlada.
+  \end{itemize}
+  % REVISAR: 31 dBm supera 30 dBm; solo cumple si la sub-banda usada admite más de 30 dBm.
+  % Definir la sub-banda (p. ej. 5725-5850 MHz) y citar la Res. 581-MM/2018.
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Sensibilidad, modulación y margen de enlace}
+  \begin{columns}[T]
+    \column{0.52\textwidth}
+    \small
+    $M = P_{RX} - S_{RX}$, con $P_{RX}=\text{\EAprxSim}$ y canal de 20 MHz\\[4pt]
+    \begin{tabular}{@{}llcc@{}}
+      \toprule
+      \textbf{MCS} & \textbf{Mod.} & $S_{RX}$ & $M$ \\ \midrule
+      MCS 0 & BPSK   & $-96$ dBm & 24 dB \\
+      MCS 4 & 16QAM  & $-86$ dBm & \textcolor{verde}{\textbf{14 dB}} \\
+      MCS 6 & 64QAM  & $-77$ dBm & 5 dB \\
+      MCS 8 & 256QAM & $-65$ dBm & \textcolor{red}{$-7$ dB} \\
+      \bottomrule
+    \end{tabular}
+    \column{0.45\textwidth}
+    \small
+    \begin{itemize}
+      \item Más orden de modulación $\Rightarrow$ más señal requerida $\Rightarrow$ menos margen.
+      \item BPSK/16QAM: margen $>$10 dB, muy estable.
+      \item 256QAM: margen negativo, imposible de sostener; se negocia 16QAM o 64QAM.
+      \item \textbf{Modulación adaptativa:} ante lluvia, desvanecimientos o más ruido, baja el
+            MCS (BPSK/QPSK) en lugar de cortar el enlace.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Nivel de ruido y SNR}
+  Ruido térmico para 20 MHz: \EAruido
+  \[
+    \text{SNR} = P_{RX} - P_{ruido} = -72 - (-101) = \textbf{\EAsnr}
+  \]
+  \begin{itemize}
+    \item Adecuado para 16QAM y 64QAM; 256QAM suele exigir $>$32 dB.
+    \item Garantiza baja BER en las modulaciones que el equipo negocia.
+  \end{itemize}
+  \vspace{4pt}
+  \begin{center}
+    \begin{tikzpicture}[every node/.style={draw=verde, fill=grisclaro,
+        rounded corners, font=\small, minimum height=0.8cm, align=center}]
+      \node (a) {RSSI y ruido};
+      \node[right=0.8cm of a] (b) {SNR\\(``claridad'')};
+      \node[right=0.8cm of b] (c) {MCS\\(constelación)};
+      \node[right=0.8cm of c] (d) {Bits por\\símbolo};
+      \node[right=0.8cm of d] (e) {Throughput};
+      \foreach \x/\y in {a/b,b/c,c/d,d/e} \draw[->,thick,naranja] (\x) -- (\y);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Pérdidas adicionales, interferencias y extremo crítico}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{block}{Pérdidas por obstáculos}
+      \small Alturas elegidas para salvar el edificio a 5.35 km con despeje \EAdespejePct\
+      $\Rightarrow L_{adicionales}=0$ dB.
+    \end{block}
+    \begin{block}{Interferencias}
+      \small Se propone \textbf{airView} para identificar señales, canales ocupados y ruido.
+      El escaneo real queda para el relevamiento en sitio (\emph{site survey}); en banda libre
+      no se puede garantizar ausencia de interferencias.
+    \end{block}
+    \column{0.48\textwidth}
+    \begin{alertblock}{Extremo más crítico: FCEFyN (\EAunoAlt)}
+      \small
+      \begin{itemize}
+        \item Zona de altísima densidad edilicia: routers y enlaces WISP elevan el ruido de fondo.
+        \item Menor altura (\EAunoAlt\ vs.\ \EAdosAlt): más expuesta a fuentes en terrazas.
+        \item Azimut \EAazUnoDos: el lóbulo de 23 dBi apunta al centro de Córdoba.
+      \end{itemize}
+    \end{alertblock}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Consideraciones regulatorias (ENACOM)}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lL@{}}
+    \toprule
+    Banda & \EAfrec \\
+    Condición de uso & Uso libre / compartido, no licenciado \\
+    PIRE máxima & 30 dBm (1 W) a 36 dBm (4 W) según sub-banda; calculada: \EApire \\
+    Restricciones & No causar interferencia perjudicial a servicios primarios y aceptar la recibida \\
+    Uso compartido & Sin protección regulatoria frente a interferencias de terceros \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{6pt}
+  \begin{alertblock}{Control de potencia en bandas compartidas}
+    Transmitir con más potencia de la necesaria eleva el piso de ruido local y aumenta las
+    colisiones, degradando el SNR de todos los enlaces de la zona, incluido el propio.
+    Ajustar la PIRE es parte del diseño.
   \end{alertblock}
 \end{frame}
 
 % ---------------------------------------------------------------
-\begin{frame}{PIRE, sensibilidad y margen de enlace}
-  \[ \text{PIRE} = P_{TX} + G_{TX} = \textbf{\EApire} \]
-  Verificación regulatoria: \completar
-  \vspace{6pt}\\
-  \begin{tabular}{@{}lcc@{}}
-    \toprule
-    \textbf{MCS} & $S_{RX}$ & Margen \\ \midrule
-    Máxima (256QAM) & \completar & \EAmargenMax \\
-    Media (16QAM)   & \completar & \EAmargenMed \\
-    Básica (BPSK)   & \completar & \completar \\
-    \bottomrule
-  \end{tabular}
-  \vspace{4pt}\\
-  Rate adaptation / conclusión: \completar
-\end{frame}
-
-% ---------------------------------------------------------------
-\begin{frame}{Ruido, SNR, pérdidas adicionales e interferencias}
-  \[ \text{SNR} = P_{RX} - P_{ruido} = \EAprxSim - (\EAruido) = \textbf{\EAsnr} \]
-  \begin{itemize}
-    \item Modulación alcanzable con ese SNR: \EAmcs
-    \item Pérdidas por obstáculos ($A_{obs}$): \completar
-    \item Análisis de interferencias: \completar
-    \item Extremo más crítico: \completar
-  \end{itemize}
-\end{frame}
-
-% ---------------------------------------------------------------
-\begin{frame}{Orientación, montaje, cableado y protección}
-  \small
+\begin{frame}{Orientación de las antenas}
   \begin{columns}[T]
-    \column{0.48\textwidth}
+    \column{0.42\textwidth}
     \begin{tabular}{@{}lcc@{}}
       \toprule
-       & Azimut & Tilt \\ \midrule
-      Est. A & \EAazUnoDos & \EAtiltUno \\
-      Est. B & \EAazDosUno & \EAtiltDos \\
+       & \textbf{Azimut} & \textbf{Tilt} \\ \midrule
+      FCEFyN & \EAazUnoDos\ N & \EAtiltUno \\
+      Canal 10 & \EAazDosUno\ S & \EAtiltDos \\
       \bottomrule
-    \end{tabular}\\[4pt]
-    Polarización: \completar\\
-    Procedimiento de alineación: \completar
+    \end{tabular}\\[6pt]
+    \small Polarización dual lineal (V y H), misma orientación física de montaje en ambos
+    extremos.
+    \column{0.55\textwidth}
+    \small
+    \begin{enumerate}
+      \item \textbf{Alineación gruesa:} GPS/brújula e inclinómetro digital hacia el azimut y
+            tilt de diseño, hasta detectar la portadora del otro extremo.
+      \item \textbf{Ajuste fino:} se fija un extremo y se microajusta el opuesto monitoreando
+            RSSI y SNR (app móvil o LEDs).
+      \item Se alterna entre estaciones hasta alcanzar $\approx$\EAprxSim\ y se ajustan las tuercas.
+    \end{enumerate}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Montaje, cableado, alimentación y protección}
+  \begin{columns}[T]
     \column{0.48\textwidth}
-    \begin{itemize}
-      \item Montaje Est.~A: \completar
-      \item Montaje Est.~B: \completar
-      \item Cable: tipo \completar, longitud \EAcable
-      \item Alimentación: \completar
-      \item Protección / PAT: \completar
-    \end{itemize}
+    \begin{block}{Sistema de montaje}
+      \small
+      \begin{itemize}
+        \item Ubiquiti \textbf{Precision Alignment Mount} con abrazaderas en ``U'' galvanizadas
+              (mástil de 1.5'' a 2.5'').
+        \item Equipo de 0.8 kg; soporta ráfagas de 200 km/h.
+        \item Ajuste de $\pm$15° en azimut y elevación.
+        \item Tuercas autofrenantes y ojal para eslinga de seguridad.
+      \end{itemize}
+    \end{block}
+    \column{0.48\textwidth}
+    \begin{block}{Cableado y protección}
+      \small
+      \begin{itemize}
+        \item Cat.\ 6 exterior (UV, cubierta PE, blindaje con hilo de drenaje).
+        \item Bajadas de 35 m (FCEFyN) y 60 m (Canal 10) $<$100 m (TIA-568): no se justifica fibra.
+        \item RJ45 blindados (STP Cat.\ 6) conectados al drenaje.
+        \item PoE pasivo 24 V / 0.3 A en el rack interior.
+        \item 2 $\times$ \textbf{ETH-SP-G2} por estación (mástil e ingreso al edificio),
+              a tierra con Cu 6 mm$^2$, $R<5\,\Omega$.
+      \end{itemize}
+    \end{block}
   \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Optimización del enlace}
   \begin{block}{Configuración propuesta}
-    \EAequipo, \EAunoAlt/\EAdosAlt, canal de \EAcanal
+    \EAequipo, \EAunoAlt/\EAdosAlt, canal de \EAcanal, $P_{TX}=$ \EAptx
   \end{block}
-  \begin{itemize}
-    \item Mayor ancho de canal: \completar
-    \item Mayor altura: \completar
-    \item Antenas de mayor ganancia: \completar
-    \item Otra frecuencia: \completar
-  \end{itemize}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lL@{}}
+    \toprule
+    \textbf{Alternativa} & \textbf{Evaluación} \\ \midrule
+    Menor altura & Pérdidas por difracción: no cumple el 60\,\% de Fresnel. \\
+    Mayor altura & Sobrecostos y más carga al viento sin beneficio. \\
+    Canal de 40/80 MHz & Más piso de ruido e interferencias; 20 MHz ya supera los 40 Mbps. \\
+    Máxima potencia & Innecesaria: 8 dBm alcanzan $-72$ dBm sin saturar el receptor ni contaminar el espectro. \\
+    Ubicación & Se conservan los sitios por tener infraestructura existente. \\
+    \bottomrule
+  \end{tabularx}
 \end{frame}

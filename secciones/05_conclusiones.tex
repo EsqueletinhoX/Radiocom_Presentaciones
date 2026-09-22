@@ -10,26 +10,30 @@
     \begin{block}{Enlace A}
       \small
       \begin{itemize}
-        \item \completar
-        \item \completar
+        \item \EAunoAlt/\EAdosAlt\ son las alturas mínimas para salvar la edificación
+              con $\geq$60\,\% de Fresnel.
+        \item $P_{RX}$ teórica \EAprxTeo\ coincide con la simulada \EAprxSim.
+        \item Canal de 20 MHz: SNR \EAsnr\ y $\sim$63 Mbps útiles $>$ 40 Mbps requeridos.
+        \item Se equilibran SNR, capacidad y normativa sin máxima potencia ni altura.
       \end{itemize}
     \end{block}
     \column{0.48\textwidth}
     \begin{block}{Enlace B}
       \small
       \begin{itemize}
-        \item En zona urbana el obstáculo crítico son los edificios: la validación 3D en
-              Google Earth fue indispensable porque UISP los subestima.
+        \item La validación 3D en Google Earth fue indispensable porque UISP subestima los edificios.
         \item Con \EBunoAlt/\EBdosAlt\ se despeja el \EBdespejePct\ de Fresnel ($A_{obs}=0$).
         \item $P_{RX}$ teórica \EBprxTeo\ vs.\ simulada \EBprxSim: diferencia $\approx$1.2 dB.
-        \item SNR de \EBsnr\ $\Rightarrow$ 16QAM; capacidad $\approx$80 Mbps $>$ 50 Mbps requeridos.
+        \item SNR de \EBsnr\ $\Rightarrow$ 16QAM; $\approx$80 Mbps $>$ 50 Mbps requeridos.
       \end{itemize}
     \end{block}
   \end{columns}
   \vspace{4pt}
   \begin{alertblock}{Generales}
-    \small El diseño es un compromiso entre capacidad, robustez frente al ruido y costo;
-    la regulación (PIRE) acota la potencia utilizable. \completar[agregar en conjunto]
+    \small En entornos urbanos sin LIDAR, el obstáculo real son los edificios y debe validarse en 3D.
+    El diseño es un compromiso entre capacidad, robustez frente al ruido y costo; la modulación
+    adaptativa mantiene el enlace ante degradaciones, y en banda compartida la potencia debe
+    ser la mínima necesaria dentro del límite de PIRE.
   \end{alertblock}
 \end{frame}
 

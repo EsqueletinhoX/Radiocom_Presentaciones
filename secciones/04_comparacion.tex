@@ -1,5 +1,5 @@
 % =============================================================
-%  COMPARACIÓN ENTRE ENLACES (se completa sola desde datos/)
+%  COMPARACIÓN ENTRE ENLACES (la tabla se completa desde datos/)
 % =============================================================
 \renewcommand{\seccorta}{Comparación}
 \section{Comparación de los enlaces}
@@ -15,22 +15,36 @@
     $R_1$ / despeje & \EArFresnel\ / \EAdespejePct & \EBrFresnel\ / \EBdespejePct \\
     Frecuencia & \EAfrec & \EBfrec \\
     Ancho de canal & \EAcanal & \EBcanal \\
-    Equipo & \EAequipo & \EBequipo \\
-    PIRE & \EApire & \EBpire \\
-    FSPL & \EAfspl & \EBfspl \\
+    PIRE ($P_{TX}$) & \EApire\ (\EAptx) & \EBpire\ (\EBptx) \\
+    FSPL & \EAfspl\ (5.5 GHz) & \EBfspl\ (5.8 GHz) \\
     $P_{RX}$ teórica / simulada & \EAprxTeo\ / \EAprxSim & \EBprxTeo\ / \EBprxSim \\
-    SNR & \EAsnr & \EBsnr \\
+    Ruido / SNR & \EAruido\ / \EAsnr & \EBruido\ / \EBsnr \\
     Capacidad requerida & \EAcapReq & \EBcapReq \\
-    Capacidad con ruido & \EAcapRuido & \EBcapRuido \\
+    Capacidad disponible & \EAcapRuido & \EBcapRuido \\
     \bottomrule
   \end{tabularx}
 \end{frame}
 
 \begin{frame}{Diferencias entre ambos diseños}
-  \begin{itemize}
-    \item Geografía y obstáculos: \completar
-    \item Decisiones de frecuencia/canal: \completar
-    \item Presupuesto de RF y margen: \completar
-    \item Dificultades particulares de cada enlace: \completar
-  \end{itemize}
+  \small
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \textbf{Extremo común:} ambos enlaces parten de la FCEFyN (mismas coordenadas) y
+            cruzan el centro de Córdoba; en ambos es el \textbf{extremo más crítico}.
+      \item \textbf{Obstáculos:} en los dos casos son edificios, no el terreno (UISP sin LIDAR).
+            B midió el despeje en Google Earth (7 m, 89\,\%); A verificó el 60\,\% con el simulador.
+      \item \textbf{Ancho de canal:} A prioriza estabilidad (20 MHz); B busca un punto
+            intermedio (40 MHz).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \textbf{Ruido:} A usa ruido térmico ($-101$ dBm $\Rightarrow$ SNR 29 dB); B asume
+            ruido urbano ($-85$ dBm $\Rightarrow$ SNR 15 dB). La elección del piso de ruido cambia
+            por completo la modulación esperada.
+      \item \textbf{Potencia:} A: 8 dBm / 31 dBm PIRE; B: 7 dBm / 30 dBm (límite AR de UISP).
+      \item \textbf{Tráfico:} A, 40 Mbps asimétrico (video en vivo, $<$15 ms);
+            B, 50 Mbps full-duplex institucional.
+    \end{itemize}
+  \end{columns}
 \end{frame}

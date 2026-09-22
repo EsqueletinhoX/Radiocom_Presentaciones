@@ -5,6 +5,10 @@
 \section{Introducción teórica}
 
 \begin{frame}{Objetivo de la actividad}
+  \small
+  \textbf{Radioenlace:} interconexión entre terminales de telecomunicación mediante ondas
+  electromagnéticas, típicamente entre 800 MHz y 50 GHz.
+  \vspace{4pt}
   \begin{block}{Parte 1}
     Diseñar y simular un radioenlace punto a punto entre dos sitios reales de Córdoba,
     justificando cada decisión: alturas, frecuencia, ancho de canal, equipamiento,
@@ -28,11 +32,11 @@
     \column{0.5\textwidth}
     \begin{itemize}
       \item \textbf{Transceptor:} modula/demodula datos de red en RF.
-      \item \textbf{Antena:} convierte corrientes de RF en ondas dirigidas y viceversa.
+      \item \textbf{Antena:} convierte corrientes de RF en ondas dirigidas y viceversa (parábolas, bocinas).
       \item \textbf{Sistema de alimentación:} tensión y corriente adecuadas para operación continua.
       \item \textbf{PoE:} energía + datos por un único cable de pares trenzados.
-      \item \textbf{Cableado de datos:} UTP/FTP o fibra hacia la red interior.
-      \item \textbf{Conectores:} RJ45, N, SMA.
+      \item \textbf{Cableado de datos y de RF:} UTP/FTP o fibra; coaxiales o guías de onda si la radio está separada.
+      \item \textbf{Conectores y bridas:} RJ45, N, SMA; uniones precisas para evitar ROE.
     \end{itemize}
     \column{0.5\textwidth}
     \begin{itemize}
@@ -70,7 +74,7 @@
     RSSI & Potencia de la señal útil recibida (dBm). \\
     Nivel de ruido & Energía no deseada en el canal: térmico, atmosférico, otras emisiones (dBm). \\
     SNR & $\text{RSSI} - \text{Ruido}$ (dB); indispensable para modulaciones complejas. \\
-    Interferencias & Señales externas co-canal o de canal adyacente. \\
+    Interferencias & Señales externas co-canal o de canal adyacente; se mitigan con la antena (\emph{deep reflectors}) o filtros. \\
     Margen de enlace & $P_{RX} - S_{RX}$ (dB); reserva ante desvanecimientos. \\
     Capacidad / throughput & Tasa útil a nivel de aplicación (Mbps). \\
     \bottomrule

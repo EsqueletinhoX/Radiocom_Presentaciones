@@ -1,61 +1,62 @@
 % =============================================================
-%  DATOS ENLACE A: [COMPLETAR sitios]
+%  DATOS ENLACE A: FCEFyN -- Canal 10
+%  Responsables: Mendes Rosa, Monja
 %  Estos valores se usan en las diapositivas del enlace y en la
 %  tabla comparativa. Cambiar acá y se actualiza en todos lados.
 % =============================================================
-\newcommand{\EAnombre}{\completar}
+\newcommand{\EAnombre}{FCEFyN -- Canal 10}
 % ---- Estación 1 (extremo "A" del enlace)
-\newcommand{\EAunoNombre}{\completar}
-\newcommand{\EAunoUbic}{\completar}
-\newcommand{\EAunoLat}{\completar}
-\newcommand{\EAunoLon}{\completar}
-\newcommand{\EAunoCota}{\completar}      % cota del terreno (s.n.m.)
-\newcommand{\EAunoAlt}{\completar}          % altura de instalación
-\newcommand{\EAunoAntena}{\completar}    % cota total de la antena
-\newcommand{\EAunoMax}{\completar}         % altura máxima disponible
+\newcommand{\EAunoNombre}{FCEFyN -- UNC}
+\newcommand{\EAunoUbic}{Av. Vélez Sarsfield 1611 (sector del avión)}
+\newcommand{\EAunoLat}{$-31.435053$}
+\newcommand{\EAunoLon}{$-64.194021$}
+\newcommand{\EAunoCota}{449.4 m}      % cota del terreno (s.n.m.) -- REVISAR: Enlace B usa 447.5 m para el mismo punto
+\newcommand{\EAunoAlt}{22 m}          % altura de instalación
+\newcommand{\EAunoAntena}{471.4 m}    % calculada: 449.4 + 22
+\newcommand{\EAunoMax}{50 m}          % altura máxima disponible
 % ---- Estación 2 (extremo "B" del enlace)
-\newcommand{\EAdosNombre}{\completar}
-\newcommand{\EAdosUbic}{\completar}
-\newcommand{\EAdosLat}{\completar}
-\newcommand{\EAdosLon}{\completar}
-\newcommand{\EAdosCota}{\completar}
-\newcommand{\EAdosAlt}{\completar}
-\newcommand{\EAdosAntena}{\completar}
-\newcommand{\EAdosMax}{\completar}
+\newcommand{\EAdosNombre}{Canal 10}
+\newcommand{\EAdosUbic}{Fray Miguel de Mojica 1600}
+\newcommand{\EAdosLat}{$-31.356785$}
+\newcommand{\EAdosLon}{$-64.197177$}
+\newcommand{\EAdosCota}{488 m}
+\newcommand{\EAdosAlt}{45 m}
+\newcommand{\EAdosAntena}{533 m}      % calculada: 488 + 45
+\newcommand{\EAdosMax}{80 m}
 % ---- Geometría
-\newcommand{\EAdist}{\completar}
-\newcommand{\EAazUnoDos}{\completar}
-\newcommand{\EAazDosUno}{\completar}
-\newcommand{\EAtiltUno}{\completar}
-\newcommand{\EAtiltDos}{\completar}
-\newcommand{\EAdifTerreno}{\completar}
-\newcommand{\EAdifAntenas}{\completar}
+\newcommand{\EAdist}{8.72 km}
+\newcommand{\EAazUnoDos}{358°}
+\newcommand{\EAazDosUno}{178°}
+\newcommand{\EAtiltUno}{$+0.21$°}
+\newcommand{\EAtiltDos}{$-0.29$°}
+\newcommand{\EAdifTerreno}{38.6 m}    % calculada: 488 - 449.4
+\newcommand{\EAdifAntenas}{61.6 m}    % calculada: 533 - 471.4
 % ---- Fresnel
-\newcommand{\EAdUno}{\completar}            % km, distancia Est.1 -> obstáculo
-\newcommand{\EAdDos}{\completar}            % km, obstáculo -> Est.2
-\newcommand{\EAobstaculo}{\completar}
-\newcommand{\EArFresnel}{\completar}
-\newcommand{\EArSesenta}{\completar}
-\newcommand{\EAdespeje}{\completar}
-\newcommand{\EAdespejePct}{\completar}
+\newcommand{\EAdUno}{4.36}            % km (centro del vano)
+\newcommand{\EAdDos}{4.36}            % km
+\newcommand{\EAobstaculo}{Edificio urbano a 5.35 km de la FCEFyN}
+\newcommand{\EArFresnel}{10.61 m}     % en el centro del vano
+\newcommand{\EArSesenta}{6.37 m}      % 0.6 x 10.61
+\newcommand{\EAdespeje}{\completar[medir en Google Earth]}  % no se usa todavía en las diapositivas
+\newcommand{\EAdespejePct}{$\geq$60\,\%}
 % ---- Frecuencia / canal / capacidad
-\newcommand{\EAfrec}{\completar}
-\newcommand{\EAfrecNum}{\completar}          % GHz, usada en FSPL
-\newcommand{\EAcanal}{\completar}
-\newcommand{\EAcapCanal}{\completar}    % simulada, sin ruido urbano
-\newcommand{\EAcapRuido}{\completar}
-\newcommand{\EAcapReq}{\completar}
+\newcommand{\EAfrec}{5 GHz (5150--5875 MHz)}
+\newcommand{\EAfrecNum}{5.8}          % GHz, usada en Fresnel (el FSPL se calculó a 5.5 GHz)
+\newcommand{\EAcanal}{20 MHz}
+\newcommand{\EAcapCanal}{88.4 Mbps}   % simulada
+\newcommand{\EAcapRuido}{$\approx$63 Mbps útiles}  % 70--75 % de 88.4 Mbps
+\newcommand{\EAcapReq}{40 Mbps asimétrico}
 % ---- Equipo y presupuesto
-\newcommand{\EAequipo}{\completar}
-\newcommand{\EAganancia}{\completar}
-\newcommand{\EAptx}{\completar}
-\newcommand{\EApire}{\completar}
-\newcommand{\EAfspl}{\completar}
-\newcommand{\EAprxTeo}{\completar}
-\newcommand{\EAprxSim}{\completar}
-\newcommand{\EAruido}{\completar}
-\newcommand{\EAsnr}{\completar}
-\newcommand{\EAmargenMax}{\completar}
-\newcommand{\EAmargenMed}{\completar}
-\newcommand{\EAmcs}{\completar}
-\newcommand{\EAcable}{\completar}
+\newcommand{\EAequipo}{Ubiquiti LiteBeam 5AC Gen2}
+\newcommand{\EAganancia}{23 dBi}
+\newcommand{\EAptx}{8 dBm}
+\newcommand{\EApire}{31 dBm}
+\newcommand{\EAfspl}{126.06 dB}
+\newcommand{\EAprxTeo}{$-72.06$ dBm}
+\newcommand{\EAprxSim}{$-72$ dBm}
+\newcommand{\EAruido}{$-101$ dBm}
+\newcommand{\EAsnr}{29 dB}
+\newcommand{\EAmargenMax}{$-7$ dB (256QAM)}
+\newcommand{\EAmargenMed}{14 dB (16QAM)}
+\newcommand{\EAmcs}{16QAM / 64QAM}
+\newcommand{\EAcable}{35 m / 60 m}
